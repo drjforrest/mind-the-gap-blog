@@ -96,28 +96,31 @@ export function MetroMap({ categories, tags }: MetroMapProps) {
               
               let pathData = `M ${allNodes[0].x} ${allNodes[0].y}`;
 
-              // Introduce curves for lines in the central area (simulating Thames)
-              if (categoryNode.y > 100 && categoryNode.y < 300) { // Assuming central area is within these y-coordinates
-                for (let j = 0; j < allNodes.length - 1; j++) {
-                  const start = allNodes[j];
-                  const end = allNodes[j + 1];
+              // Revert to mostly straight lines, introduce curves at specific points
+              for (let j = 0; j < allNodes.length - 1; j++) {
+                const start = allNodes[j];
+                const end = allNodes[j + 1];
 
-                  // Simple Bézier curve: control points are midway in x and slightly offset in y
-                  const cx1 = start.x + (end.x - start.x) / 2;
-                  const cy1 = start.y + (end.y - start.y) / 4; // Offset control point in y
-                  const cx2 = start.x + (end.x - start.x) / 2;
-                  const cy2 = end.y - (end.y - start.y) / 4; // Offset control point in y
+                // Simple logic to introduce a curve around a hypothetical intersection area
+                // This is a basic example and might need adjustment based on your actual node positions
+                if (start.x < 400 && end.x > 400 && Math.abs(start.y - end.y) < 50) { // Check if crossing a vertical center line and nodes are relatively close vertically
+                   const midX = (start.x + end.x) / 2;
+                   const midY = (start.y + end.y) / 2;
+                   // Create a gentle curve passing through the approximate center
+                   pathData += ` Q ${midX} ${midY + (start.y < end.y ? 50 : -50)}, ${end.x} ${end.y}`;
 
-                  pathData += ` C ${cx1} ${cy1}, ${cx2} ${cy2}, ${end.x} ${end.y}`;
+                } else if (Math.abs(start.x - end.x) < 50 && start.y < 200 && end.y > 200) { // Check if crossing a horizontal center line and nodes are relatively close horizontally
+                    const midX = (start.x + end.x) / 2;
+                    const midY = (start.y + end.y) / 2;
+                     // Create a gentle curve passing through the approximate center
+                    pathData += ` Q ${midX + (start.x < end.x ? 50 : -50)} ${midY}, ${end.x} ${end.y}`;
                 }
-              } else { // Keep straight lines for other areas
-                for (let j = 0; j < allNodes.length - 1; j++) {
-                  const start = allNodes[j];
-                  const end = allNodes[j + 1];
+                
+                else {
+                  // Default to a straight line
                   pathData += ` L ${end.x} ${end.y}`;
                 }
               }
-
               
               return (
                   <path
@@ -163,6 +166,9 @@ export function MetroMap({ categories, tags }: MetroMapProps) {
                     )}
                   </g>
                 </Link>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Explore posts about "{name}"</p>
               </TooltipContent>
             </Tooltip>
           ))}
