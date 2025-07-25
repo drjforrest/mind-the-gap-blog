@@ -92,12 +92,37 @@ export function MetroMap({ categories, tags }: MetroMapProps) {
               const categoryNode = nodes.get(category);
               if (!categoryNode) return null;
               
-              const allX = [categoryNode.x, ...lineNodes.map(([,node]) => node.x)].sort((a,b) => a-b);
+              const allNodes = [categoryNode, ...lineNodes.map(([name, node]) => node)].sort((a,b) => a.x-b.x);
+              
+              let pathData = `M ${allNodes[0].x} ${allNodes[0].y}`;
+
+              // Introduce curves for lines in the central area (simulating Thames)
+              if (categoryNode.y > 100 && categoryNode.y < 300) { // Assuming central area is within these y-coordinates
+                for (let j = 0; j < allNodes.length - 1; j++) {
+                  const start = allNodes[j];
+                  const end = allNodes[j + 1];
+
+                  // Simple Bézier curve: control points are midway in x and slightly offset in y
+                  const cx1 = start.x + (end.x - start.x) / 2;
+                  const cy1 = start.y + (end.y - start.y) / 4; // Offset control point in y
+                  const cx2 = start.x + (end.x - start.x) / 2;
+                  const cy2 = end.y - (end.y - start.y) / 4; // Offset control point in y
+
+                  pathData += ` C ${cx1} ${cy1}, ${cx2} ${cy2}, ${end.x} ${end.y}`;
+                }
+              } else { // Keep straight lines for other areas
+                for (let j = 0; j < allNodes.length - 1; j++) {
+                  const start = allNodes[j];
+                  const end = allNodes[j + 1];
+                  pathData += ` L ${end.x} ${end.y}`;
+                }
+              }
+
               
               return (
                   <path
                     key={`line-${category}`}
-                    d={`M ${allX[0]} ${categoryNode.y} L ${allX[allX.length-1]} ${categoryNode.y}`}
+                    d={pathData}
                     stroke={categoryNode.color}
                     strokeWidth="4"
                     fill="none"
@@ -138,9 +163,6 @@ export function MetroMap({ categories, tags }: MetroMapProps) {
                     )}
                   </g>
                 </Link>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Explore posts about "{name}"</p>
               </TooltipContent>
             </Tooltip>
           ))}
