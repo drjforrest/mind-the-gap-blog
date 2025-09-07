@@ -17,7 +17,18 @@ export function Header() {
   return (
     <header className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-40 w-full border-b">
       <div className="container flex h-16 items-center">
-        <Logo />
+        <div className="flex items-center space-x-6">
+          <Logo />
+          <Link 
+            href="/about" 
+            className={cn(
+              'text-sm font-medium transition-colors hover:text-primary',
+              pathname === '/about' ? 'text-primary' : 'text-foreground/80'
+            )}
+          >
+            About
+          </Link>
+        </div>
         <nav className="ml-auto flex items-center space-x-2 sm:space-x-4">
           {navLinks.map((link) => (
             <Button key={link.href} variant="ghost" asChild>
