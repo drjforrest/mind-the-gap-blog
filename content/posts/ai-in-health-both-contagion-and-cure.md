@@ -1,6 +1,6 @@
 ---
 title: "Artificial Intelligence: Both Contagion and Cure - Why the Equity Stakes for Digital Health Have Never Been Higher"
-date: "2024-09-07"
+date: "2025-08-30"
 category: "AI Ethics"
 tags: ["AI", "Healthcare", "Digital Equity", "Bias", "Ethics"]
 excerpt: "AI represents something unprecedented in healthcare: a technology that can simultaneously amplify both healing and harm, often through the exact same mechanisms. Understanding this duality is crucial for ensuring equitable implementation."
