@@ -1,15 +1,15 @@
 'use server';
 
 /**
- * @fileOverview A question answering AI agent for blog post content.
+ * @fileOverview A question answering AI function for blog post content.
  *
  * - answerQuestionsFromContent - A function that answers questions based on blog content.
  * - AnswerQuestionsFromContentInput - The input type for the answerQuestionsFromContent function.
  * - AnswerQuestionsFromContentOutput - The return type for the answerQuestionsFromContent function.
  */
 
-import {ai} from '@/ai/genkit';
-import {z} from 'genkit';
+import { callDeepSeekWithStructuredOutput } from '@/ai/deepseek';
+import { z } from 'zod';
 
 const AnswerQuestionsFromContentInputSchema = z.object({
   blogContent: z.string().describe('The content of the blog post.'),
@@ -23,30 +23,22 @@ const AnswerQuestionsFromContentOutputSchema = z.object({
 export type AnswerQuestionsFromContentOutput = z.infer<typeof AnswerQuestionsFromContentOutputSchema>;
 
 export async function answerQuestionsFromContent(input: AnswerQuestionsFromContentInput): Promise<AnswerQuestionsFromContentOutput> {
-  return answerQuestionsFromContentFlow(input);
+  const prompt = `You are an AI assistant that answers questions based on the provided blog post content.
+
+Blog Post Content: ${input.blogContent}
+
+Question: ${input.question}
+
+Please provide a helpful answer based on the blog content. If the question cannot be answered from the provided content, say so clearly.
+
+Return your response as JSON with an "answer" field containing your response.`;
+
+  return await callDeepSeekWithStructuredOutput(
+    prompt,
+    AnswerQuestionsFromContentOutputSchema,
+    (content: string) => {
+      const parsed = JSON.parse(content);
+      return AnswerQuestionsFromContentOutputSchema.parse(parsed);
+    }
+  );
 }
-
-const prompt = ai.definePrompt({
-  name: 'answerQuestionsFromContentPrompt',
-  input: {schema: AnswerQuestionsFromContentInputSchema},
-  output: {schema: AnswerQuestionsFromContentOutputSchema},
-  prompt: `You are an AI assistant that answers questions based on the provided blog post content.
-
-Blog Post Content: {{{blogContent}}}
-
-Question: {{{question}}}
-
-Answer:`,
-});
-
-const answerQuestionsFromContentFlow = ai.defineFlow(
-  {
-    name: 'answerQuestionsFromContentFlow',
-    inputSchema: AnswerQuestionsFromContentInputSchema,
-    outputSchema: AnswerQuestionsFromContentOutputSchema,
-  },
-  async input => {
-    const {output} = await prompt(input);
-    return output!;
-  }
-);

@@ -1,15 +1,15 @@
 'use server';
 
 /**
- * @fileOverview A flow that draws a line between two areas of the metro map, as defined by tags or categories, to guide users to areas of interest.
+ * @fileOverview A function that draws a line between two areas of the metro map, as defined by tags or categories, to guide users to areas of interest.
  *
  * - drawAiMetroLine - A function that handles the process of determining the start and end points and returning them.
  * - DrawAiMetroLineInput - The input type for the drawAiMetroLine function.
  * - DrawAiMetroLineOutput - The return type for the drawAiMetroLine function.
  */
 
-import {ai} from '@/ai/genkit';
-import {z} from 'genkit';
+import { callDeepSeekWithStructuredOutput } from '@/ai/deepseek';
+import { z } from 'zod';
 
 const DrawAiMetroLineInputSchema = z.object({
   availableTags: z.array(z.string()).describe('An array of available tags in the metro map.'),
@@ -24,32 +24,22 @@ const DrawAiMetroLineOutputSchema = z.object({
 export type DrawAiMetroLineOutput = z.infer<typeof DrawAiMetroLineOutputSchema>;
 
 export async function drawAiMetroLine(input: DrawAiMetroLineInput): Promise<DrawAiMetroLineOutput> {
-  return drawAiMetroLineFlow(input);
+  const prompt = `You are an AI assistant designed to guide users through a metro-style map of blog content related to digital health equity.
+
+Given the following available tags: ${JSON.stringify(input.availableTags)}
+And the following available categories: ${JSON.stringify(input.availableCategories)}
+
+Determine a starting tag or category and an ending tag or category that might be of interest to the user, drawing a "line" between them.
+The start and end points should be different and relevant to digital health equity. Try to find the category/tag that is least visited by the user.
+
+Return your response as JSON with "start" and "end" fields containing the selected points.`;
+
+  return await callDeepSeekWithStructuredOutput(
+    prompt,
+    DrawAiMetroLineOutputSchema,
+    (content: string) => {
+      const parsed = JSON.parse(content);
+      return DrawAiMetroLineOutputSchema.parse(parsed);
+    }
+  );
 }
-
-const prompt = ai.definePrompt({
-  name: 'drawAiMetroLinePrompt',
-  input: {schema: DrawAiMetroLineInputSchema},
-  output: {schema: DrawAiMetroLineOutputSchema},
-  prompt: `You are an AI assistant designed to guide users through a metro-style map of blog content related to digital health equity.
-
-  Given the following available tags: {{availableTags}}
-  And the following available categories: {{availableCategories}}
-
-  Determine a starting tag or category and an ending tag or category that might be of interest to the user, drawing a "line" between them.
-  The start and end points should be different and relevant to digital health equity. Try to find the category/tag that is least visited by the user.
-  Return the start and end points.
-  `, // eslint-disable-line indent
-});
-
-const drawAiMetroLineFlow = ai.defineFlow(
-  {
-    name: 'drawAiMetroLineFlow',
-    inputSchema: DrawAiMetroLineInputSchema,
-    outputSchema: DrawAiMetroLineOutputSchema,
-  },
-  async input => {
-    const {output} = await prompt(input);
-    return output!;
-  }
-);

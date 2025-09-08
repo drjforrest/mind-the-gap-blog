@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  // Optimize for Vercel deployment
   images: {
     remotePatterns: [
       {
