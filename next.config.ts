@@ -1,5 +1,4 @@
 import type { NextConfig } from 'next';
-import createMDX from '@next/mdx';
 
 /** @type {import('next').NextConfig} */
 const nextConfig: NextConfig = {
@@ -19,19 +18,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Configure `pageExtensions` to include MDX files
-  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+  // Clean configuration for Vercel deployment
 };
 
-const withMDX = createMDX({
-  options: {
-    remarkPlugins: [
-      'remark-gfm'
-    ],
-    rehypePlugins: [
-      'rehype-highlight'
-    ],
-  },
-});
-
-export default withMDX(nextConfig);
+export default nextConfig;
