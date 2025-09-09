@@ -9,7 +9,7 @@ if [ $code -eq 0 ]; then
     # Now you can use the deployment url from stdout for the next step of your workflow
     deploymentUrl=`cat deployment-url.txt`
     echo "Deployment successful: $deploymentUrl"
-    vercel alias $deploymentUrl blog.drjforrest.com
+    vercel alias set $deploymentUrl blog.drjforrest.com
 else
     # Handle the error
     errorMessage=`cat error.txt`
