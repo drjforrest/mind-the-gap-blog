@@ -14,6 +14,7 @@ import { Bot } from "lucide-react";
 
 // Simple rate limiting - max 3 requests per hour per session
 const RATE_LIMIT_KEY = "ai_summary_requests";
+const SUMMARY_CACHE_KEY = "ai_summary_cache";
 const MAX_REQUESTS_PER_HOUR = 3;
 const HOUR_IN_MS = 60 * 60 * 1000;
 
@@ -27,13 +28,61 @@ function checkRateLimit(): boolean {
   // Remove requests older than 1 hour
   requests = requests.filter((timestamp) => now - timestamp < HOUR_IN_MS);
 
-  if (requests.length >= MAX_REQUESTS_PER_HOUR) {
-    return false;
-  }
+  return requests.length < MAX_REQUESTS_PER_HOUR;
+}
+
+function recordRequest(): void {
+  if (typeof window === "undefined") return;
+
+  const now = Date.now();
+  const stored = localStorage.getItem(RATE_LIMIT_KEY);
+  let requests: number[] = stored ? JSON.parse(stored) : [];
+
+  // Remove requests older than 1 hour
+  requests = requests.filter((timestamp) => now - timestamp < HOUR_IN_MS);
 
   requests.push(now);
   localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(requests));
-  return true;
+}
+
+// Helper function to clear rate limiting data (for debugging)
+function clearRateLimit(): void {
+  if (typeof window !== "undefined") {
+    localStorage.removeItem(RATE_LIMIT_KEY);
+    console.log("Rate limiting data cleared");
+  }
+}
+
+// Cache functions for session-based storage
+function getCachedSummary(postContent: string): string | null {
+  if (typeof window === "undefined") return null;
+
+  try {
+    const cache = sessionStorage.getItem(SUMMARY_CACHE_KEY);
+    if (!cache) return null;
+
+    const cacheData = JSON.parse(cache);
+    const postHash = btoa(postContent.slice(0, 100)); // Simple hash from first 100 chars
+
+    return cacheData[postHash] || null;
+  } catch {
+    return null;
+  }
+}
+
+function setCachedSummary(postContent: string, summary: string): void {
+  if (typeof window === "undefined") return;
+
+  try {
+    const postHash = btoa(postContent.slice(0, 100)); // Simple hash from first 100 chars
+    const cache = sessionStorage.getItem(SUMMARY_CACHE_KEY);
+    const cacheData = cache ? JSON.parse(cache) : {};
+
+    cacheData[postHash] = summary;
+    sessionStorage.setItem(SUMMARY_CACHE_KEY, JSON.stringify(cacheData));
+  } catch (error) {
+    console.warn("Failed to cache AI summary:", error);
+  }
 }
 
 interface AiSummaryProps {
@@ -46,12 +95,24 @@ export function AiSummary({ blogPostContent }: AiSummaryProps) {
   const [error, setError] = useState("");
 
   useEffect(() => {
+    // Temporary: Clear any corrupted rate limiting data
+    clearRateLimit();
+
     async function getSummary() {
       try {
         setLoading(true);
         setError("");
 
-        // Check rate limit
+        // Check cache first
+        const cachedSummary = getCachedSummary(blogPostContent);
+        if (cachedSummary) {
+          console.log("Using cached AI summary");
+          setSummary(cachedSummary);
+          setLoading(false);
+          return;
+        }
+
+        // Check rate limit only if no cache
         if (!checkRateLimit()) {
           setError(
             "Rate limit exceeded. AI summaries are limited to 3 per hour to manage costs. Please try again later.",
@@ -60,8 +121,14 @@ export function AiSummary({ blogPostContent }: AiSummaryProps) {
           return;
         }
 
+        // Record the request only when actually making the API call
+        recordRequest();
+
         const result = await summarizeBlogPost({ blogPostContent });
         setSummary(result.summary);
+
+        // Cache the result
+        setCachedSummary(blogPostContent, result.summary);
       } catch (e) {
         console.error(e);
         setError("Could not generate summary. Please try again later.");

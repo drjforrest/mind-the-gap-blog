@@ -1,13 +1,13 @@
 Vercel CLI 47.0.5
 Retrieving project…
 Deploying drjforrests-projects/mind-the-gap-blog
-Uploading [--------------------] (0.0B/74.6KB)
-Uploading [========------------] (32.5KB/74.6KB)
-Uploading [============--------] (48.5KB/74.6KB)
-Uploading [=================---] (64.5KB/74.6KB)
-Uploading [====================] (74.6KB/74.6KB)
-Inspect: https://vercel.com/drjforrests-projects/mind-the-gap-blog/3LiV13mAfKixTFSRvQ8MGZqoc4y4 [2s]
-Preview: https://mind-the-gap-blog-mv3075m41-drjforrests-projects.vercel.app [2s]
+Uploading [--------------------] (0.0B/302KB)
+Uploading [=====---------------] (84.4KB/302KB)
+Uploading [==========----------] (164.4KB/302KB)
+Uploading [===============-----] (228.4KB/302KB)
+Uploading [====================] (302.0KB/302KB)
+Inspect: https://vercel.com/drjforrests-projects/mind-the-gap-blog/CkVUyqH4ozWVEGN8ExVh7eYRWuXB [3s]
+Preview: https://mind-the-gap-blog-6oaknykl1-drjforrests-projects.vercel.app [3s]
 Queued
 Building
 Completing

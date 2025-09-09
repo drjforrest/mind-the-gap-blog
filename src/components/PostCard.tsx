@@ -17,7 +17,7 @@ interface PostCardProps {
 export function PostCard({ post }: PostCardProps) {
   return (
     <Link href={`/posts/${post.slug}`} className="group block">
-      <Card className="h-full flex flex-col transition-all duration-300 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 border border-border hover:border-primary/50">
+      <Card className="h-full flex flex-col transition-all duration-300 ease-in-out group-hover:shadow-xl group-hover:-translate-y-2 group-hover:scale-[1.02] border border-border/60 hover:border-primary/70 bg-card/50 backdrop-blur-sm shadow-sm hover:shadow-lg hover:bg-card/80">
         <CardHeader className="pb-4">
           <div className="flex items-center gap-2 mb-2">
             <Badge variant="secondary" className="text-xs">

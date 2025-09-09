@@ -62,14 +62,34 @@ export default function PostPage({ params }: PostPageProps) {
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           components={{
-            img: ({ node, ...props }) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                {...props}
-                className="rounded-lg shadow-md my-8 mx-auto"
-                alt={props.alt || ""}
-              />
-            ),
+            img: ({ node, ...props }) => {
+              const alt = props.alt || "";
+              const src = props.src || "";
+
+              // Images that should keep full size
+              const keepFullSize =
+                alt.toLowerCase().includes("science") ||
+                alt.toLowerCase().includes("medical reasoning") ||
+                alt.toLowerCase().includes("journal") ||
+                alt.toLowerCase().includes("paper") ||
+                src.includes("science-medical-reasoning") ||
+                src.includes("ledley-ct-scanner") ||
+                alt.toLowerCase().includes("ct scanner") ||
+                alt.toLowerCase().includes("ledley");
+
+              const sizeClasses = keepFullSize
+                ? "max-w-full"
+                : "max-w-2xl max-h-96 object-contain";
+
+              return (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  {...props}
+                  className={`rounded-lg shadow-md my-8 mx-auto border border-border/30 bg-card/30 p-2 ${sizeClasses}`}
+                  alt={alt}
+                />
+              );
+            },
             h1: ({ node, ...props }) => (
               <h1 {...props} className="text-3xl font-bold mt-8 mb-4" />
             ),
@@ -108,14 +128,8 @@ export default function PostPage({ params }: PostPageProps) {
 
       <div className="mt-12 space-y-8">
         <AiSummary blogPostContent={post.content} />
-        <EquityGapSpotter 
-          blogTitle={post.title}
-          blogContent={post.content} 
-        />
-        <PostConnectionMapper 
-          currentPost={post}
-          allPosts={allPosts}
-        />
+        <EquityGapSpotter blogTitle={post.title} blogContent={post.content} />
+        <PostConnectionMapper currentPost={post} allPosts={allPosts} />
       </div>
     </article>
   );

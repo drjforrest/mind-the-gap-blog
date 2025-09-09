@@ -13,8 +13,8 @@ Picture this: It's the 1950s. Computers fill entire rooms, doctors rely almost e
 Robert S. Ledley wasn't your typical dentist. With a DDS degree in one hand and theoretical physics equations in the other, he embodied the renaissance ideal—someone whose curiosity refused to be contained by conventional boundaries. Born in New York City in 1926, Ledley's mind constantly connected dots others couldn't even see. While most were still figuring out what computers might be good for, he envisioned them analyzing chromosomes, proteins, and eventually, creating detailed images of the human body.
 Meanwhile, Lee B. Lusted—Harvard-trained physician and intellectual explorer—was growing frustrated with medicine's black-box approach to decision-making. "Why," he wondered, "do we train doctors by having them shadow experts without explicitly teaching them how to think?" With his background in radiology and natural talent for systems thinking, Lusted was the perfect intellectual counterweight to Ledley's inventive energy.
 
-![Lee B. Lusted portrait](/images/lee-lusted.png)
-*Lee B. Lusted, radiologist and systems thinker who co-founded medical informatics*
+![Robert S. Ledley portrait](/images/lee-lusted.png)
+*Robert S. Ledley, dentist-turned-inventor who co-founded medical informatics*
 
 ## A Meeting of Minds in Post-War America
 

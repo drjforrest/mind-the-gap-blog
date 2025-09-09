@@ -1,5 +1,3 @@
-
-
 ---
 title: "The Farm Boy Who Decoded How Ideas Spread: Everett Rogers and the Diffusion of Innovations"
 date: "2025-09-08"
