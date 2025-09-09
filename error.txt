@@ -1,0 +1,11 @@
+Vercel CLI 47.0.5
+Retrieving project…
+Deploying drjforrests-projects/mind-the-gap-blog
+Uploading [--------------------] (0.0B/578B)
+Uploading [====================] (578.0B/578B)
+Inspect: https://vercel.com/drjforrests-projects/mind-the-gap-blog/BJQ1ABknHamNMCeuyBEwNzYsq8cJ [2s]
+Preview: https://mind-the-gap-blog-iq0yvzetr-drjforrests-projects.vercel.app [2s]
+Queued
+Building
+Completing
+To deploy to production (blog.drjforrest.com), run `vercel --prod`
