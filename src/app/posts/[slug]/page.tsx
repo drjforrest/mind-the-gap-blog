@@ -2,7 +2,8 @@ import { getPostBySlug, getAllPosts } from "@/lib/posts";
 import { notFound } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { AiSummary } from "@/components/AiSummary";
-import { AiQa } from "@/components/AiQa";
+import { EquityGapSpotter } from "@/components/EquityGapSpotter";
+import { PostConnectionMapper } from "@/components/PostConnectionMapper";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -21,6 +22,7 @@ interface PostPageProps {
 
 export default function PostPage({ params }: PostPageProps) {
   const post = getPostBySlug(params.slug);
+  const allPosts = getAllPosts();
 
   if (!post) {
     notFound();
@@ -104,9 +106,16 @@ export default function PostPage({ params }: PostPageProps) {
         </ReactMarkdown>
       </div>
 
-      <div className="mt-12 space-y-12">
+      <div className="mt-12 space-y-8">
         <AiSummary blogPostContent={post.content} />
-        <AiQa blogContent={post.content} />
+        <EquityGapSpotter 
+          blogTitle={post.title}
+          blogContent={post.content} 
+        />
+        <PostConnectionMapper 
+          currentPost={post}
+          allPosts={allPosts}
+        />
       </div>
     </article>
   );
