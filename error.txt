@@ -1,14 +1,4 @@
-Vercel CLI 47.0.5
+Vercel CLI 47.0.6
 Retrieving project…
-Deploying drjforrests-projects/mind-the-gap-blog
-Uploading [--------------------] (0.0B/302KB)
-Uploading [=====---------------] (84.4KB/302KB)
-Uploading [==========----------] (164.4KB/302KB)
-Uploading [===============-----] (228.4KB/302KB)
-Uploading [====================] (302.0KB/302KB)
-Inspect: https://vercel.com/drjforrests-projects/mind-the-gap-blog/CkVUyqH4ozWVEGN8ExVh7eYRWuXB [3s]
-Preview: https://mind-the-gap-blog-6oaknykl1-drjforrests-projects.vercel.app [3s]
-Queued
-Building
-Completing
-To deploy to production (blog.drjforrest.com), run `vercel --prod`
+Your Project was either deleted, transferred to a new Team, or you don’t have access to it anymore.
+? Set up and deploy “~/dev/devprojects/mind-the-gap-blog”? (Y/n)[66G
