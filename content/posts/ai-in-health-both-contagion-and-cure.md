@@ -4,9 +4,13 @@ date: "2025-08-30"
 category: "AI Ethics"
 tags: ["AI", "Healthcare", "Digital Equity", "Bias", "Ethics"]
 excerpt: "AI represents something unprecedented in healthcare: a technology that can simultaneously amplify both healing and harm, often through the exact same mechanisms. Understanding this duality is crucial for ensuring equitable implementation."
+articleType: "Digital Health Futures"
 ---
 
 # Artificial Intelligence: Both Contagion and Cure - Why the Equity Stakes for Digital Health Have Never Been Higher
+
+![AI represents both promise and peril in healthcare](/images/ai-thinking-person-circuits.png)
+*AI represents both promise and peril in healthcare - requiring careful thought about implementation*
 
 ## The Technology That Heals and Harms Simultaneously
 Artificial Intelligence (AI) has arrived in healthcare with a promise and a warning. Unlike previous medical innovations that simply did one thing well or poorly, AI represents something unprecedented: a technology that can simultaneously amplify both healing and harm, often through the exact same mechanisms.

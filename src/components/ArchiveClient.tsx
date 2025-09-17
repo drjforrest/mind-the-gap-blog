@@ -5,6 +5,8 @@ import { useSearchParams } from 'next/navigation';
 import { PostCard } from '@/components/PostCard';
 import { Post } from '@/lib/posts';
 import { Input } from '@/components/ui/input';
+import { ArticleTypeBadge } from '@/components/ui/article-type-badge';
+import { getAllArticleTypes } from '@/lib/articleTypes';
 import { Search } from 'lucide-react';
 
 interface ArchiveClientProps {
@@ -14,14 +16,21 @@ interface ArchiveClientProps {
 function ArchiveContent({ posts }: ArchiveClientProps) {
   const searchParams = useSearchParams();
   const initialFilter = searchParams.get('filter') || '';
+  const initialArticleType = searchParams.get('articleType') || 'All';
 
   const [searchTerm, setSearchTerm] = useState('');
   const [activeFilter, setActiveFilter] = useState(initialFilter);
+  const [activeArticleType, setActiveArticleType] = useState(initialArticleType);
 
   const allFilters = useMemo(() => {
     const categories = [...new Set(posts.map(p => p.category))];
     const tags = [...new Set(posts.flatMap(p => p.tags))];
     return ['All', ...categories, ...tags];
+  }, [posts]);
+
+  const allArticleTypes = useMemo(() => {
+    const usedTypes = [...new Set(posts.map(p => p.articleType))];
+    return ['All', ...usedTypes];
   }, [posts]);
 
   const filteredPosts = useMemo(() => {
@@ -35,9 +44,12 @@ function ArchiveContent({ posts }: ArchiveClientProps) {
                             post.category === activeFilter || 
                             post.tags.includes(activeFilter);
 
-      return matchesSearch && matchesFilter;
+      const matchesArticleType = activeArticleType === 'All' || 
+                                 post.articleType === activeArticleType;
+
+      return matchesSearch && matchesFilter && matchesArticleType;
     });
-  }, [posts, searchTerm, activeFilter]);
+  }, [posts, searchTerm, activeFilter, activeArticleType]);
 
   return (
     <div className="space-y-8">
@@ -59,20 +71,44 @@ function ArchiveContent({ posts }: ArchiveClientProps) {
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-2">
-        {allFilters.map(filter => (
-          <button
-            key={filter}
-            onClick={() => setActiveFilter(filter)}
-            className={`px-3 py-1 text-sm rounded-full border transition-colors ${
-              activeFilter === filter 
-                ? 'bg-primary text-primary-foreground border-primary' 
-                : 'bg-transparent hover:bg-accent hover:text-accent-foreground'
-            }`}
-          >
-            {filter}
-          </button>
-        ))}
+      <div className="space-y-4">
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Article Types</h3>
+          <div className="flex flex-wrap gap-2">
+            {allArticleTypes.map(articleType => (
+              <button
+                key={articleType}
+                onClick={() => setActiveArticleType(articleType)}
+                className={`px-3 py-1 text-sm rounded-full border transition-colors ${
+                  activeArticleType === articleType 
+                    ? 'bg-primary text-primary-foreground border-primary' 
+                    : 'bg-transparent hover:bg-accent hover:text-accent-foreground'
+                }`}
+              >
+                {articleType === 'All' ? 'All Types' : articleType}
+              </button>
+            ))}
+          </div>
+        </div>
+        
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Categories & Tags</h3>
+          <div className="flex flex-wrap gap-2">
+            {allFilters.map(filter => (
+              <button
+                key={filter}
+                onClick={() => setActiveFilter(filter)}
+                className={`px-3 py-1 text-sm rounded-full border transition-colors ${
+                  activeFilter === filter 
+                    ? 'bg-primary text-primary-foreground border-primary' 
+                    : 'bg-transparent hover:bg-accent hover:text-accent-foreground'
+                }`}
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">

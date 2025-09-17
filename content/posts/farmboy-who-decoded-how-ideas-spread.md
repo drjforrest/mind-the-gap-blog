@@ -4,6 +4,7 @@ date: "2025-09-08"
 category: "Innovation Theory"
 tags: ["Diffusion of Innovations", "Everett Rogers", "Healthcare Innovation", "Social Theory", "Digital Health"]
 excerpt: "From Iowa cornfields to global health systems: How a farm boy's observations about hybrid corn adoption created the framework we still use to understand how innovations spread—and why it matters more than ever in the age of AI."
+articleType: "History in Context"
 ---
 
 # The Farm Boy Who Decoded How Ideas Spread: Everett Rogers and the Diffusion of Innovations

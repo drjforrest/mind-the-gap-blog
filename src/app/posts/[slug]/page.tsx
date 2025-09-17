@@ -1,9 +1,11 @@
 import { getPostBySlug, getAllPosts } from "@/lib/posts";
 import { notFound } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
+import { ArticleTypeBadge } from "@/components/ui/article-type-badge";
 import { AiSummary } from "@/components/AiSummary";
 import { EquityGapSpotter } from "@/components/EquityGapSpotter";
 import { PostConnectionMapper } from "@/components/PostConnectionMapper";
+import ConsultingTransformationViz from "@/components/charts/blogArticle4-charts";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -15,23 +17,28 @@ export async function generateStaticParams() {
 }
 
 interface PostPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-export default function PostPage({ params }: PostPageProps) {
-  const post = getPostBySlug(params.slug);
+export default async function PostPage({ params }: PostPageProps) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
   const allPosts = getAllPosts();
 
   if (!post) {
     notFound();
   }
 
+  // Split content around ConsultingTransformationViz component
+  const contentParts = post.content.split('<ConsultingTransformationViz />');
+
   return (
     <article className="max-w-4xl mx-auto py-8">
       <header className="mb-8 text-center">
-        <div className="mb-4">
+        <div className="mb-4 flex justify-center gap-2 flex-wrap">
+          <ArticleTypeBadge articleType={post.articleType} />
           <Badge variant="secondary">{post.category}</Badge>
         </div>
         <h1 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
@@ -59,71 +66,80 @@ export default function PostPage({ params }: PostPageProps) {
           {post.excerpt}
         </p>
 
-        <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
-          components={{
-            img: ({ node, ...props }) => {
-              const alt = props.alt || "";
-              const src = props.src || "";
+        {contentParts.map((part, index) => (
+          <div key={index}>
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              components={{
+                img: ({ node, ...props }) => {
+                  const alt = props.alt || "";
+                  const src = props.src || "";
 
-              // Images that should keep full size
-              const keepFullSize =
-                alt.toLowerCase().includes("science") ||
-                alt.toLowerCase().includes("medical reasoning") ||
-                alt.toLowerCase().includes("journal") ||
-                alt.toLowerCase().includes("paper") ||
-                src.includes("science-medical-reasoning") ||
-                src.includes("ledley-ct-scanner") ||
-                alt.toLowerCase().includes("ct scanner") ||
-                alt.toLowerCase().includes("ledley");
+                  // Images that should keep full size
+                  const keepFullSize =
+                    alt.toLowerCase().includes("science") ||
+                    alt.toLowerCase().includes("medical reasoning") ||
+                    alt.toLowerCase().includes("journal") ||
+                    alt.toLowerCase().includes("paper") ||
+                    src.includes("science-medical-reasoning") ||
+                    src.includes("ledley-ct-scanner") ||
+                    alt.toLowerCase().includes("ct scanner") ||
+                    alt.toLowerCase().includes("ledley");
 
-              const sizeClasses = keepFullSize
-                ? "max-w-full"
-                : "max-w-2xl max-h-96 object-contain";
+                  const sizeClasses = keepFullSize
+                    ? "max-w-full"
+                    : "max-w-2xl max-h-96 object-contain";
 
-              return (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  {...props}
-                  className={`rounded-lg shadow-md my-8 mx-auto border border-border/30 bg-card/30 p-2 ${sizeClasses}`}
-                  alt={alt}
-                />
-              );
-            },
-            h1: ({ node, ...props }) => (
-              <h1 {...props} className="text-3xl font-bold mt-8 mb-4" />
-            ),
-            h2: ({ node, ...props }) => (
-              <h2 {...props} className="text-2xl font-bold mt-6 mb-3" />
-            ),
-            h3: ({ node, ...props }) => (
-              <h3 {...props} className="text-xl font-bold mt-6 mb-3" />
-            ),
-            p: ({ node, ...props }) => (
-              <p {...props} className="mb-4 leading-relaxed" />
-            ),
-            ul: ({ node, ...props }) => (
-              <ul {...props} className="list-disc pl-6 mb-4 space-y-2" />
-            ),
-            ol: ({ node, ...props }) => (
-              <ol {...props} className="list-decimal pl-6 mb-4 space-y-2" />
-            ),
-            blockquote: ({ node, ...props }) => (
-              <blockquote
-                {...props}
-                className="border-l-4 border-primary/30 pl-4 italic my-6 text-muted-foreground"
-              />
-            ),
-            em: ({ node, ...props }) => (
-              <em
-                {...props}
-                className="italic text-muted-foreground text-sm block text-center my-2"
-              />
-            ),
-          }}
-        >
-          {post.content}
-        </ReactMarkdown>
+                  return (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      {...props}
+                      className={`rounded-lg shadow-md my-8 mx-auto border border-border/30 bg-card/30 p-2 ${sizeClasses}`}
+                      alt={alt}
+                    />
+                  );
+                },
+                h1: ({ node, ...props }) => (
+                  <h1 {...props} className="text-3xl font-bold mt-8 mb-4" />
+                ),
+                h2: ({ node, ...props }) => (
+                  <h2 {...props} className="text-2xl font-bold mt-6 mb-3" />
+                ),
+                h3: ({ node, ...props }) => (
+                  <h3 {...props} className="text-xl font-bold mt-6 mb-3" />
+                ),
+                p: ({ node, ...props }) => (
+                  <p {...props} className="mb-4 leading-relaxed" />
+                ),
+                ul: ({ node, ...props }) => (
+                  <ul {...props} className="list-disc pl-6 mb-4 space-y-2" />
+                ),
+                ol: ({ node, ...props }) => (
+                  <ol {...props} className="list-decimal pl-6 mb-4 space-y-2" />
+                ),
+                blockquote: ({ node, ...props }) => (
+                  <blockquote
+                    {...props}
+                    className="border-l-4 border-primary/30 pl-4 italic my-6 text-muted-foreground"
+                  />
+                ),
+                em: ({ node, ...props }) => (
+                  <em
+                    {...props}
+                    className="italic text-muted-foreground text-sm block text-center my-2"
+                  />
+                ),
+              }}
+            >
+              {part}
+            </ReactMarkdown>
+            {index < contentParts.length - 1 && (
+              <div className="my-8">
+                <ConsultingTransformationViz />
+              </div>
+            )}
+          </div>
+        ))}
       </div>
 
       <div className="mt-12 space-y-8">

@@ -1,4 +1,16 @@
 Vercel CLI 47.0.6
 Retrieving project…
 Your Project was either deleted, transferred to a new Team, or you don’t have access to it anymore.
-? Set up and deploy “~/dev/devprojects/mind-the-gap-blog”? (Y/n)[66G
+? Set up and deploy “~/dev/devprojects/mind-the-gap-blog”? (Y/n)[66GError: read EIO
+    at TTY.onStreamRead (node:internal/stream_base_commons:216:20)
+    at TTY.callbackTrampoline (node:internal/async_hooks:130:17) {
+  errno: -5,
+  code: 'EIO',
+  syscall: 'read'
+}
+Error: An unexpected error occurred!
+Error: read EIO
+    at TTY.onStreamRead (node:internal/stream_base_commons:216:20)
+    at TTY.callbackTrampoline (node:internal/async_hooks:130:17)
+
+[?25h

@@ -4,6 +4,7 @@ date: "2025-09-07"
 category: "Digital Health History"
 tags: ["Medical Informatics", "AI in Healthcare", "Robert Ledley", "Lee Lusted", "Healthcare Innovation", "Digital Health Pioneers"]
 excerpt: "When a dentist and a radiologist changed healthcare forever - the story of Robert Ledley and Lee Lusted, whose 1959 paper laid the foundation for modern medical computing and AI diagnosis."
+articleType: "History in Context"
 ---
 
 # The Unlikely Heroes Who Computerized Medicine: The Ledley & Lusted Revolution

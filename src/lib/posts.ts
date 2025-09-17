@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { ArticleType } from './articleTypes';
 
 export interface Post {
   slug: string;
@@ -10,6 +11,7 @@ export interface Post {
   tags: string[];
   excerpt: string;
   content: string;
+  articleType: ArticleType;
 }
 
 interface PostFrontmatter {
@@ -18,6 +20,7 @@ interface PostFrontmatter {
   category: string;
   tags: string[];
   excerpt: string;
+  articleType: ArticleType;
 }
 
 const postsDirectory = path.join(process.cwd(), 'content/posts');
@@ -82,4 +85,15 @@ export function getAllCategories() {
   const posts = getAllPostsFromMarkdown();
   const allCategories = posts.map((post) => post.category);
   return [...new Set(allCategories)];
+}
+
+export function getAllArticleTypes() {
+  const posts = getAllPostsFromMarkdown();
+  const allArticleTypes = posts.map((post) => post.articleType);
+  return [...new Set(allArticleTypes)];
+}
+
+export function getPostsByArticleType(articleType: ArticleType) {
+  const posts = getAllPostsFromMarkdown();
+  return posts.filter((post) => post.articleType === articleType);
 }

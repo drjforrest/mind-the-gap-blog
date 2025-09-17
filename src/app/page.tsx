@@ -3,12 +3,14 @@ import { getAllPosts } from "@/lib/posts";
 import { Button } from "@/components/ui/button";
 import { PostCard } from "@/components/PostCard";
 import { Badge } from "@/components/ui/badge";
+import { ArticleTypeBadge } from "@/components/ui/article-type-badge";
 
 export default function Home() {
   const posts = getAllPosts();
   const featuredPosts = posts.slice(0, 3); // Show first 3 posts as featured
   const allCategories = [...new Set(posts.map((p) => p.category))];
   const allTags = [...new Set(posts.flatMap((p) => p.tags))];
+  const allArticleTypes = [...new Set(posts.map((p) => p.articleType))];
 
   return (
     <div className="min-h-screen relative">
@@ -77,7 +79,22 @@ export default function Home() {
         {/* Categories and tags section */}
         <div className="w-full max-w-4xl mx-auto">
           <h3 className="text-2xl font-bold mb-6">Explore Topics</h3>
-          <div className="space-y-4">
+          <div className="space-y-6">
+            <div>
+              <h4 className="text-lg font-semibold mb-3">Article Types</h4>
+              <div className="flex flex-wrap gap-2 justify-center">
+                {allArticleTypes.map((articleType) => (
+                  <Link
+                    key={articleType}
+                    href={`/archive?articleType=${encodeURIComponent(articleType)}`}
+                  >
+                    <div className="cursor-pointer hover:opacity-80 transition-opacity">
+                      <ArticleTypeBadge articleType={articleType} />
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
             <div>
               <h4 className="text-lg font-semibold mb-3">Categories</h4>
               <div className="flex flex-wrap gap-2 justify-center">
