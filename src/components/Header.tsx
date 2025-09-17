@@ -43,6 +43,16 @@ export function Header() {
               </Link>
             </Button>
           ))}
+          <Button variant="outline" asChild>
+            <Link
+              href="https://drjforrest.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium transition-colors hover:text-primary"
+            >
+              Main Site
+            </Link>
+          </Button>
         </nav>
       </div>
     </header>

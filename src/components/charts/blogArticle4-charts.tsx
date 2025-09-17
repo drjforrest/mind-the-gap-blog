@@ -1,5 +1,7 @@
+"use client";
+
 import React, { useState } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell, Area, AreaChart } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area, AreaChart } from 'recharts';
 
 const ConsultingTransformationViz = () => {
   const [activeTab, setActiveTab] = useState('pyramid');
@@ -39,13 +41,6 @@ const ConsultingTransformationViz = () => {
     { metric: 'Workforce Using AI', percentage: 72, firm: 'McKinsey' }
   ];
 
-  const COLORS = [
-    'hsl(var(--chart-1))',
-    'hsl(var(--chart-2))',
-    'hsl(var(--chart-3))',
-    'hsl(var(--chart-4))',
-    'hsl(var(--chart-5))'
-  ];
 
   const TabButton = ({ id, label, active, onClick }: {
     id: string;
@@ -146,7 +141,7 @@ const ConsultingTransformationViz = () => {
                 />
                 <YAxis label={{ value: 'Investment (Billions USD)', angle: -90, position: 'insideLeft' }} />
                 <Tooltip 
-                  formatter={(value, name, props) => [
+                  formatter={(value, _, props) => [
                     `$${value}B`, 
                     `Investment: ${props.payload.description}`
                   ]} 
@@ -199,7 +194,7 @@ const ConsultingTransformationViz = () => {
                 />
                 <YAxis label={{ value: 'Performance Improvement (%)', angle: -90, position: 'insideLeft' }} />
                 <Tooltip 
-                  formatter={(value, name, props) => [
+                  formatter={(value, _, props) => [
                     `${value}%`, 
                     `Source: ${props.payload.firm}`
                   ]} 
