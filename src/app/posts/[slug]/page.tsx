@@ -75,20 +75,18 @@ export default async function PostPage({ params }: PostPageProps) {
                   const alt = props.alt || "";
                   const src = props.src || "";
 
-                  // Images that should keep full size
-                  const keepFullSize =
-                    alt.toLowerCase().includes("science") ||
-                    alt.toLowerCase().includes("medical reasoning") ||
-                    alt.toLowerCase().includes("journal") ||
-                    alt.toLowerCase().includes("paper") ||
+                  // Only specific academic papers/documents should keep larger size
+                  const keepLargerSize =
+                    (alt.toLowerCase().includes("publication") && alt.toLowerCase().includes("academic")) ||
+                    (alt.toLowerCase().includes("paper") && alt.toLowerCase().includes("documenting")) ||
+                    src.includes("hcq-publication") ||
                     src.includes("science-medical-reasoning") ||
-                    src.includes("ledley-ct-scanner") ||
-                    alt.toLowerCase().includes("ct scanner") ||
-                    alt.toLowerCase().includes("ledley");
+                    src.includes("ledley-ct-scanner");
 
-                  const sizeClasses = keepFullSize
-                    ? "max-w-full"
-                    : "max-w-2xl max-h-96 object-contain";
+                  // Default to medium size for most images, smaller for general illustrations
+                  const sizeClasses = keepLargerSize
+                    ? "max-w-3xl max-h-[500px] object-contain"
+                    : "max-w-xl max-h-80 object-contain";
 
                   return (
                     // eslint-disable-next-line @next/next/no-img-element

@@ -34,6 +34,19 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
           rel="stylesheet"
         />
+        {/* RSS and JSON Feed Discovery */}
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Mind the Gap RSS Feed"
+          href="/feed.xml"
+        />
+        <link
+          rel="alternate"
+          type="application/feed+json"
+          title="Mind the Gap JSON Feed"
+          href="/feed.json"
+        />
         <Analytics />
       </head>
       <body

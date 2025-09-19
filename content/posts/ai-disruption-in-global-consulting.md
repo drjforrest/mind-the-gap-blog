@@ -12,7 +12,7 @@ The consulting industry is facing its own “iPhone moment.” Remember how smar
 This revolution brings sweeping gains, but it also demands hard questions: As consulting becomes faster, smaller, and more data-driven, who benefits? And who risks being left out? Nowhere are the stakes higher than in global health, where decisions informed by consultants’ recommendations will shape lives and opportunities for decades to come.
 ## The Consulting Landscape: From Pyramid to Obelisk
 
-![AI transformation in consulting affects real people and communities](/images/ai-female-silhouette-circuits.png)
+![AI transformation in consulting affects real people and communities](/images/silhouette-microchip-woman.png)
 *AI transformation in consulting affects real people and communities - especially in global health*
 
 Consider these numbers:

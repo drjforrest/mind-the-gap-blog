@@ -25,14 +25,17 @@ const connectionTypeColors = {
 
 export function PostConnectionMapper({ currentPost, allPosts }: PostConnectionMapperProps) {
   const [connections, setConnections] = useState<MapPostConnectionsOutput | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   const otherPosts = allPosts.filter(post => post.slug !== currentPost.slug);
 
   useEffect(() => {
     const findConnections = async () => {
-      if (otherPosts.length === 0) return;
+      if (otherPosts.length === 0) {
+        setLoading(false);
+        return;
+      }
       
       setLoading(true);
       setError('');

@@ -24,7 +24,7 @@ const categoryColors = {
 
 export function EquityGapSpotter({ blogTitle, blogContent }: EquityGapSpotterProps) {
   const [gaps, setGaps] = useState<SpotEquityGapsOutput | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -48,6 +48,8 @@ export function EquityGapSpotter({ blogTitle, blogContent }: EquityGapSpotterPro
 
     if (blogContent && blogTitle) {
       analyzeGaps();
+    } else {
+      setLoading(false);
     }
   }, [blogContent, blogTitle]);
 
