@@ -8,7 +8,6 @@ articleType: "History in Context"
 ---
 
 # The Unlikely Heroes Who Computerized Medicine: The Ledley & Lusted Revolution
-When a Dentist and a Radiologist Changed Healthcare Forever
 
 Picture this: It's the 1950s. Computers fill entire rooms, doctors rely almost entirely on intuition, and the idea of algorithms diagnosing disease sounds like science fiction. Enter two brilliant minds whose unlikely partnership would forever transform how medicine works.
 Robert S. Ledley wasn't your typical dentist. With a DDS degree in one hand and theoretical physics equations in the other, he embodied the renaissance ideal—someone whose curiosity refused to be contained by conventional boundaries. Born in New York City in 1926, Ledley's mind constantly connected dots others couldn't even see. While most were still figuring out what computers might be good for, he envisioned them analyzing chromosomes, proteins, and eventually, creating detailed images of the human body.

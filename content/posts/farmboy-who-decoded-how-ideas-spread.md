@@ -8,7 +8,6 @@ articleType: "History in Context"
 ---
 
 # The Farm Boy Who Decoded How Ideas Spread: Everett Rogers and the Diffusion of Innovations
-When Rural Sociology Changed How We Think About Change
 
 Imagine standing in an Iowa cornfield in the 1940s, watching a peculiar pattern unfold: some farmers eagerly planting new hybrid corn varieties while their neighbours—facing the exact same conditions and presented with the same evidence—stubbornly stuck to traditional seeds. What invisible forces were at work? What hidden logic explained why good ideas spread unevenly, even when their benefits seemed obvious?
 This question captivated a young farm boy named Everett Rogers, whose curiosity about human behaviour would eventually reshape how we understand innovation itself. Born and raised in the agricultural heartland, Rogers wasn't just observing rural life—he was living it, absorbing its rhythms and contradictions, developing the keen eye that would later help him spot patterns others missed.
