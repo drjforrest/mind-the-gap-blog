@@ -1,7 +1,7 @@
 import { AiSummary } from "@/components/AiSummary";
 import EnvironmentalHypocrisyComparison from "@/components/EnvironmentalHypocrisyComparison";
 import { EquityGapSpotter } from "@/components/EquityGapSpotter";
-import LevelingEffectVisualization from "@/components/Levellingeffectvisualization";
+import LevelingEffectVisualization from "@/components/LevellingEffectVisualization";
 import { PostConnectionMapper } from "@/components/PostConnectionMapper";
 import ConsultingTransformationViz from "@/components/charts/blogArticle4-charts";
 import { ArticleTypeBadge } from "@/components/ui/article-type-badge";
