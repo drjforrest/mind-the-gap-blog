@@ -63,19 +63,9 @@ _The predictable lifecycle of technology moral panic—and where we are with AI 
 
 ### The Pattern That Never Changes
 
-Every technology moral panic follows the same predictable arc:
+Every technology moral panic follows the same arc. A new technology emerges and changes how people access information. Elites and gatekeepers sound alarms about cognitive decline, moral degradation, or social collapse. Individual users get blamed for society's ills — the focus shifts from systems to personal responsibility. Then the people who benefit most from the technology — often those with disabilities, from marginalized communities, or with fewer resources — quietly disappear from the conversation. Eventually the panic fades, the technology becomes part of daily life, a new innovation arrives, and the whole thing starts again.
 
-**Stage 1: The Innovation** - A new technology emerges that changes how people access information or entertainment.
-
-**Stage 2: The Panic** - Elites and gatekeepers sound alarms about cognitive decline, moral degradation, or social collapse.
-
-**Stage 3: The Shaming** - Individual users are blamed for society's ills. The focus shifts from systems to personal responsibility.
-
-**Stage 4: The Selective Amnesia** - The people who benefit most from the technology—often those with disabilities, from marginalized communities, or with fewer resources—are erased from the conversation.
-
-**Stage 5: The Normalization** - Eventually, the panic fades. The technology becomes integrated into daily life. A new innovation arrives, and the cycle begins again.
-
-We're currently somewhere between Stages 3 and 4 with AI. The technology has arrived. The panic is in full swing. Individual users are being shamed for their ChatGPT queries. And once again, the people who most need these tools are disappearing from the discourse.
+We're somewhere between the shaming stage and the selective amnesia stage with AI right now. The technology has arrived. The panic is in full swing. Individual users are being shamed for their ChatGPT queries. And once again, the people who most need these tools are disappearing from the discourse.
 
 ### Tomorrow's Villains, Yesterday's Heroes
 
@@ -85,7 +75,7 @@ And you know what? In some narrow, specific ways, each of these predictions cont
 
 But that's not the same as "destroying" anything. It's called _adaptation_. It's called _evolution_. It's what humans have always done with new tools.
 
-The question was never "Will this technology change things?" Of course it will. The question is: "Who benefits from the change, and who gets left behind?"
+The question was never whether a technology will change things. Of course it will. The question is who benefits from the change, and who gets left behind.
 
 And here's where the moral panic does its real damage: by focusing all our outrage on individual use and personal shame, we completely miss the structural question. We waste our energy yelling at people for using ChatGPT instead of asking: "How do we ensure AI serves justice rather than amplifying inequality?"
 

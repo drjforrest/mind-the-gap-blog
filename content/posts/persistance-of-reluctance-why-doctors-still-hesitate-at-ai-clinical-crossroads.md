@@ -21,7 +21,7 @@ Sixty-six years later, we’re watching the same pattern unfold with AI-powered 
 
 But here’s what’s different this time: the reluctance might actually be justified.
 
-⸻
+---
 
 The Effectiveness Paradox
 
@@ -31,7 +31,7 @@ Yet clinicians who actually use these systems report something more nuanced. The
 
 Here’s the critical insight effectiveness research reveals: AI tools don’t simply make doctors “better” at diagnosis in a straightforward way. Instead, they reshape the cognitive landscape of clinical decision-making—sometimes enhancing judgment, sometimes complicating it, and sometimes exposing gaps between algorithmic confidence and clinical reality. A tool that works brilliantly for one population may fail spectacularly for another, not because of malfunction, but because of systematic differences in the data used to train it.[4]
 
-⸻
+---
 
 ## The New Reluctance
 
@@ -45,13 +45,13 @@ The most frequently cited barrier isn’t technophobia or resistance to change�
 
 Workflow integration presents another persistent challenge. Unlike in Ledley and Lusted’s era, when computerized systems were optional additions to practice, modern AI tools must embed seamlessly into electronic health records and care processes.[5] When they don’t, they generate excessive alerts, require extra documentation, or slow down encounters—even effective tools get abandoned or worked around.
 
-Perhaps the most significant difference is clinicians’ growing awareness of algorithmic bias and its potential to perpetuate health disparities. Today’s physicians understand what Ledley and Lusted couldn’t have anticipated: that tools trained primarily on data from well-resourced populations, urban settings, and majority demographics may systematically disadvantage the patients most vulnerable to inequities.[4] The reluctance isn’t just about trusting machines—it’s about recognizing that machines can encode and amplify the very biases equity-conscious clinicians strive to dismantle.
+Perhaps the most significant difference is clinicians’ growing awareness of algorithmic bias and its potential to perpetuate health disparities. Today’s physicians understand what Ledley and Lusted couldn’t have anticipated: that tools trained primarily on data from well-resourced populations, urban settings, and majority demographics may systematically disadvantage the patients most vulnerable to inequities.[4] The reluctance isn’t just about trusting machines—it’s about recognizing that machines can encode and amplify the very biases equity-conscious clinicians are trying to dismantle.
 
-⸻
+---
 
 ## The Evidence Gap That Matters Most
 
-Here’s what keeps me up at night: we’re making the same mistake with AI decision support that we made with hydroxychloroquine during COVID-19—not the same content, but the same pattern: rushing to implement before understanding differential impacts across populations.
+The deeper concern is this: we’re making the same mistake with AI decision support that we made with hydroxychloroquine during COVID-19—not the same content, but the same pattern: rushing to implement before understanding differential impacts across populations.
 
 Recent research shows that AI-CDSS studies focus overwhelmingly on specific disease areas in well-resourced settings, with rigorous evaluation of real-world effectiveness still sparse.[1][2] We have hundreds of pilot studies demonstrating technical feasibility, but far fewer addressing the equity questions that matter most: Does this tool work equally well for rural and urban patients? For insured and uninsured populations? Across racial and ethnic groups? In safety-net clinics versus academic medical centers?
 
@@ -59,7 +59,7 @@ The communities most likely to benefit from AI-enhanced diagnostic capabilities�
 
 The absence of patient outcome data compounds this concern. While studies show AI can improve diagnostic accuracy in controlled research environments, proving that these improvements translate into better patient outcomes remains elusive.[2] Accuracy isn’t the same as effectiveness, and effectiveness isn’t the same as equity.
 
-⸻
+---
 
 ## Governance in a Regulatory Vacuum
 
@@ -71,33 +71,33 @@ Healthcare organizations recognize this governance vacuum and are developing the
 
 But here’s the uncomfortable truth: we’re essentially experimenting on patients while we figure out the governance structures. The tools are already shaping clinical decisions, influencing treatment pathways, and potentially perpetuating disparities—all while we’re still designing frameworks to ensure their safe and equitable use.
 
-⸻
+---
 
 ## The Equity Stakes We Cannot Ignore
 
 The health equity implications of AI decision support represent both the greatest promise and the gravest threat of this technological revolution. These systems could democratize access to specialist-level diagnostic capabilities, bringing cutting-edge medical knowledge to resource-constrained settings—or they could become sophisticated mechanisms for further entrenching disparities.
 
-Algorithmic bias can enter at every stage of the AI lifecycle—from dataset curation that underrepresents certain populations, to model development that optimizes for majority outcomes, to implementation strategies that prioritize well-resourced settings over safety-net clinics.[4][12] The same computational power that enables AI to process vast data also enables it to operationalize bias at unprecedented scale and speed.
+Algorithmic bias can enter at every stage of the AI lifecycle—from dataset curation that underrepresents certain populations, to model development that optimizes for majority outcomes, to implementation strategies that prioritize well-resourced settings over safety-net clinics.[4][12] The same computational power that enables AI to process vast data also enables it to operationalize bias faster and at greater scale than anything we've seen before.
 
 What makes this particularly insidious is that AI tools can perpetuate inequity while appearing objective. The algorithm doesn’t express prejudice—it simply reflects patterns in its training data, patterns that often encode historical and structural inequities in access and outcomes. When a decision support tool systematically underperforms for certain populations, it’s not deliberate discrimination—it’s invisibility.
 
 The under-representation of low- and middle-income countries in AI development compounds these concerns globally.[5] As AI tools developed primarily in wealthy settings get exported to resource-constrained contexts, we risk new forms of digital colonialism—imposing technological solutions that reflect Global North priorities while failing to meet Global South needs.
 
-⸻
+---
 
 ## What We’re Watching Closely
 
-After fifteen years navigating the gap between digital health promise and real-world implementation, I find myself both optimistic about AI’s potential and vigilant about its risks. The questions demanding rigorous attention include:
+After fifteen years navigating the gap between digital health promise and real-world implementation, I find myself both optimistic about AI’s potential and clear-eyed about its risks. A few questions deserve more rigorous attention than they’re getting.
 
-Effectiveness: Are we measuring the right outcomes? Diagnostic accuracy matters, but so do patient-centered outcomes like quality of life, trust, and equitable access. Are we tracking differential performance across demographic groups and care settings?
+On effectiveness: are we measuring the right outcomes? Diagnostic accuracy matters, but so do patient-centred outcomes like quality of life, trust, and equitable access. Are we tracking differential performance across demographic groups and care settings, or just headline accuracy numbers?
 
-Adoption: How do we distinguish between resistance that reflects legitimate concerns versus resistance that preserves the status quo? When clinicians reject AI recommendations, are they exercising sound judgment or missing opportunities to catch otherwise overlooked diagnoses?
+On adoption: how do we distinguish resistance that reflects legitimate concerns from resistance that protects the status quo? When clinicians reject AI recommendations, are they exercising sound judgment or missing diagnoses they would otherwise catch?
 
-Governance: Who decides which AI tools get implemented—and whose voices shape those decisions? Are the communities most affected by bias included in development and oversight, or are decisions still made top-down by technologists and administrators?
+On governance: who decides which AI tools get implemented, and whose voices shape those decisions? Are the communities most affected by algorithmic bias included in development and oversight, or are those decisions still made top-down by technologists and administrators?
 
-Equity: As AI decision support becomes standard of care in well-resourced settings, what mechanisms ensure that underserved populations aren’t left behind? How do we prevent AI from widening, rather than narrowing, the health equity gap?
+On equity: as AI decision support becomes standard in well-resourced settings, what mechanisms ensure underserved populations aren’t left behind? Waiting to answer this question until the tools are already embedded is not a strategy.
 
-⸻
+---
 
 ## The Choice Before Us
 
@@ -105,7 +105,7 @@ Ledley and Lusted couldn’t have anticipated that sixty-six years after their g
 
 The persistence of reluctance isn’t evidence of failure—it’s evidence of wisdom. Today’s clinicians understand what the pioneers couldn’t: that powerful tools require powerful safeguards, that innovation without equity risks amplifying disparities, and that the question “Does it work?” must always be followed by “For whom? Under what conditions? At what cost?”
 
-We stand at a crossroads where the decisions we make about AI governance, evaluation standards, and implementation strategies will shape healthcare delivery for generations. The window for thoughtful action is narrowing. Once algorithmic recommendations become standard practice—once biases are institutionalized—changing course becomes exponentially harder.
+The decisions being made now about AI governance, evaluation standards, and implementation strategies will shape healthcare delivery for a long time. Once algorithmic recommendations become standard practice and biases get institutionalized, changing course gets much harder. The right time to build equity into AI is before it's everywhere.
 
 This time, unlike in Ledley and Lusted’s era, we have both the awareness and the means to build equity into AI from the ground up. We can demand representative datasets, rigorous evaluation across diverse populations, transparent algorithms clinicians can interrogate, and governance frameworks that prioritize patient safety and justice. We can insist that effectiveness research measure not just accuracy but outcomes; not just ideal conditions, but real-world impact across all patient groups.
 
@@ -113,7 +113,7 @@ The question isn’t whether AI will transform clinical decision-making—that t
 
 Reluctance persists because the stakes have never been higher. This time, we need to listen to what that reluctance is telling us.
 
-⸻
+---
 
 Sources
 [1] Effectiveness of Artificial Intelligence (AI) in Clinical ... https://pubmed.ncbi.nlm.nih.gov/39133332/
